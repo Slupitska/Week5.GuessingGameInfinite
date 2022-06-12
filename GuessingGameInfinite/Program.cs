@@ -17,39 +17,27 @@ namespace GuessingGameInfinite
 
             Random rand = new Random();
             int i = rand.Next(1, 11); //задуманное компьютером число
-            int count = 1; count++; //n - номер попытки игрока, начиная с 1
-
-
+            
             Console.WriteLine("Hi. What number did PC generate?");
-            Console.WriteLine($"You have 3 attempts. Attempts {n}. Please input any number from 1 to 10: ");
-            int u = Convert.ToInt32(Console.ReadLine()); //число, которое вводит игрок
-
-            while (count <= 4)
+            Console.WriteLine($"You have unlimited attempts. Please input any number from 1 to 10: ");
+                        
+            bool loopActive = true;
+            while (loopActive)
             {
+                int u = Convert.ToInt32(Console.ReadLine()); //число, которое вводит игрок
 
-                if (i == u)
+                if (u == i)
                 {
-                    Console.WriteLine($"Yes! You guessed! PC generated the number {u}!");
-                    break;
+                    Console.WriteLine($"You guessed! PC generated the number {u}!");
+                    loopActive = false;
                 }
-
                 else
                 {
-                    
-                    if (count == 4)
-                    {
-                        Console.WriteLine($"Sorry, you didn't guess the number. It was {i}.");
-                        break;
+                    Console.WriteLine("Sorry, you didn't guess the number. Try again !");
 
-                    }
-
-                    Console.WriteLine($"No, you didn't guess. Attempt {count}:");
-                    u = Convert.ToInt32(Console.ReadLine());
-                                                
                 }
-          
             }
             Console.WriteLine("If you want - play again!");
-        }   
+        }
     }
 }
